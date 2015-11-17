@@ -1,14 +1,10 @@
-Sub Autocalc()
-Application.Calculation = xlCalculationAutomatic
-End Sub
-
-
 Sub UnlockChildcare()
  
 
 On Error Resume Next
 
 Application.ActiveProtectedViewWindow.Edit
+Application.Calculation = xlCalculationAutomatic
 
  On Error GoTo ErrorOccured
    
