@@ -112,10 +112,9 @@ End Sub
 
 Sub SaveTFI()
  
-Sub SaveTFI()
- 
-    Dim FName As String, FPDFName As String
-    Dim FPath           As String
+    Dim FName As String
+    Dim FPDFName As String
+    Dim FPath As String
     Dim FDate As String
 
 FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
