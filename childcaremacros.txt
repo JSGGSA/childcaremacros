@@ -1,9 +1,5 @@
 Sub UnlockChildcare()
  
-'Make sure you change the file paths before using these macros
-'C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\
-'Find and replace all instances of that filepath with your own location
-
 On Error Resume Next
 
 Application.ActiveProtectedViewWindow.Edit
@@ -12,21 +8,42 @@ Application.Calculation = xlCalculationAutomatic
  On Error GoTo ErrorOccured
    
     Dim pwd1 As String
-    'pwd1 = "AABBAAAAAAAW"
-    pwd1 = "AAAABAABBBAw"
+    pwd1 = "AABBAAAAAAAW"
+    'pwd1 = "AAAABAABBBAw"
     If pwd1 = "" Then Exit Sub
     For Each ws In Worksheets
         ws.Unprotect Password:=pwd1
     Next
     MsgBox "All sheets UnProtected."
-   
-   Exit Sub
-     
+
+
+Dim promptanswer As Integer
+Dim strPrompt As String
+Dim strTitle As String
+ 
+    ' Promt
+    strPrompt = "Is this a new workbook?"
+ 
+    ' Dialog's Title
+    strTitle = "Insert Additional Formulas"
+ 
+    'Display MessageBox
+    promptanswer = MsgBox(strPrompt, vbYesNo, strTitle)
+ 
+    If promptanswer = vbYes Then
+      Call InputsheetFormulas
+    End If
+    
+      For Each ws In Worksheets
+       ws.Protect (pwd1)
+        Next
+    
+    Exit Sub
+
 ErrorOccured:
     MsgBox "Sheets could not be UnProtected - Password Incorrect"
     Exit Sub
-
-
+    
 End Sub
 
 Sub InputSheetFormulas()
