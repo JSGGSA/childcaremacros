@@ -172,7 +172,7 @@ End Sub
 Sub RunLetters()
 Dim numchilds As Integer
 
-    numchilds = InputBox("How many children?", "enter number of children", 1)
+    numchilds = InputBox("How many children?", "Enter number of children", 1)
 
     If numchilds = 1 Then
         Call SaveChild1
@@ -371,7 +371,7 @@ Dim actiontype As String
         OpenAfterPublish:=True
         
     
-    'ATWEC-Sponsor_Provider Letter child1
+    'ATWEC-Sponsor_Provider Letter child1 Regular letter child2
     
     ElseIf Sheets("input sheet").Range("b133") = "ATWEC" Then
         
@@ -404,7 +404,7 @@ Dim actiontype As String
         OpenAfterPublish:=True
         
     
-    'ATWEC-Sponsor_Provider Letter child1 only
+    'ATWEC-Sponsor_Provider Letter child2 only Regular Letter child1
     
     ElseIf Sheets("input sheet").Range("b161") = "ATWEC" Then
     
