@@ -93,7 +93,7 @@ Sub SaveNewChildFile()
     & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
     'Change the J here if your drive is mapped to another letter
     FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
-    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " actiontype &  " " & FDate
+    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype &  " " & FDate
 
     
     
@@ -194,7 +194,7 @@ Dim numcalcs1
     
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Reg Fee " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
     'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
@@ -216,7 +216,7 @@ Dim numcalcs1
     If Sheets("input sheet").Range("b133") = "ATWEC" Then
 
     'ATWEC-Sponsor_Provider Letter
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -233,7 +233,7 @@ Dim numcalcs1
     Else
 
     'Sponsor Letter Sheet
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -253,7 +253,7 @@ Dim numcalcs1
     
     If numcalcs1 = 1 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
             
@@ -270,7 +270,7 @@ Dim numcalcs1
         
     ElseIf numcalcs1 = 2 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
         & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -286,7 +286,7 @@ Dim numcalcs1
         
     ElseIf numcalcs1 = 3 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
         & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -324,7 +324,7 @@ Dim actiontype As String
         
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Reg Fee " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
     'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
@@ -348,7 +348,7 @@ Dim actiontype As String
     
     If Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b161") = "ATWEC" Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -367,7 +367,7 @@ Dim actiontype As String
     
     ElseIf Sheets("input sheet").Range("b133") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -381,7 +381,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -400,7 +400,7 @@ Dim actiontype As String
     
     ElseIf Sheets("input sheet").Range("b161") = "ATWEC" Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -414,7 +414,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -431,7 +431,7 @@ Dim actiontype As String
     Else
     
     'Sponsor Letter Sheet
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -451,7 +451,7 @@ Dim actiontype As String
     
     If numcalcs1 = 1 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
          FPDFName = FPath & FName & ".pdf"
             
@@ -467,7 +467,7 @@ Dim actiontype As String
         
     ElseIf numcalcs1 = 2 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
             
@@ -483,7 +483,7 @@ Dim actiontype As String
         
     ElseIf numcalcs1 = 3 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
             
@@ -506,7 +506,7 @@ Dim actiontype As String
     
     If numcalcs1 = 1 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
             
@@ -522,7 +522,7 @@ Dim actiontype As String
 
     ElseIf numcalcs2 = 2 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
         & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -538,7 +538,7 @@ Dim actiontype As String
         
     ElseIf numcalcs2 = 3 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
         & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -577,7 +577,7 @@ Dim actiontype As String
        
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Reg Fee " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
     'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
@@ -601,7 +601,7 @@ Dim actiontype As String
     If Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b161") = "ATWEC" And Sheets("input sheet").Range("b189") = "ATWEC" Then
     
     'ATWEC-Sponsor_Provider Letter all 3 kids
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -620,7 +620,7 @@ Dim actiontype As String
 
     ElseIf Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b161") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -634,7 +634,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -652,7 +652,7 @@ Dim actiontype As String
 
     ElseIf Sheets("input sheet").Range("b161") = "ATWEC" And Sheets("input sheet").Range("b189") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -666,7 +666,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -685,7 +685,7 @@ Dim actiontype As String
     
     ElseIf Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b189") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter1 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -699,7 +699,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter2 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -713,7 +713,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -732,7 +732,7 @@ Dim actiontype As String
     
     ElseIf Sheets("input sheet").Range("b133") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -746,7 +746,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -765,7 +765,7 @@ Dim actiontype As String
 
     ElseIf Sheets("input sheet").Range("b161") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letter1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letter1 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -779,7 +779,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letter2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letter2 " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -793,7 +793,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -811,7 +811,7 @@ Dim actiontype As String
     
     ElseIf Sheets("input sheet").Range("b189") = "ATWEC" Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " ATWEC Letter " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " ATWEC Letter " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -825,7 +825,7 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -843,7 +843,7 @@ Dim actiontype As String
     Else
 
     'Sponsor Letter Sheet
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Letters " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Letters " _
             & FDate
         FPDFName = FPath & FName & ".pdf"
         
@@ -864,7 +864,7 @@ Dim actiontype As String
     
     If numcalcs1 = 1 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
          FPDFName = FPath & FName & ".pdf"
             
@@ -880,7 +880,7 @@ Dim actiontype As String
         
     ElseIf numcalcs1 = 2 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
          FPDFName = FPath & FName & ".pdf"
             
@@ -896,7 +896,7 @@ Dim actiontype As String
         
     ElseIf numcalcs1 = 3 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice1 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice1 " _
             & FDate
          FPDFName = FPath & FName & ".pdf"
             
@@ -920,7 +920,7 @@ Dim actiontype As String
     
     If numcalcs2 = 1 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
             & FDate
            FPDFName = FPath & FName & ".pdf"
             
@@ -936,7 +936,7 @@ Dim actiontype As String
     
     ElseIf numcalcs2 = 2 Then
         
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
             & FDate
            FPDFName = FPath & FName & ".pdf"
             
@@ -953,7 +953,7 @@ Dim actiontype As String
     
     ElseIf numcalcs2 = 3 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice2 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
             & FDate
            FPDFName = FPath & FName & ".pdf"
             
@@ -976,7 +976,7 @@ Dim actiontype As String
     
     If numcalcs3 = 1 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice3 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice3 " _
             & FDate
           FPDFName = FPath & FName & ".pdf"
             
@@ -992,7 +992,7 @@ Dim actiontype As String
         
     ElseIf numcalcs3 = 2 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice3 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice3 " _
             & FDate
           FPDFName = FPath & FName & ".pdf"
             
@@ -1008,7 +1008,7 @@ Dim actiontype As String
         
     ElseIf numcalcs3 = 3 Then
     
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " " Invoice3 " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice3 " _
             & FDate
           FPDFName = FPath & FName & ".pdf"
             
