@@ -10,7 +10,7 @@ Application.Calculation = xlCalculationAutomatic
    
     Dim pwd1 As String
     'pwd1 = "AABBAAAAAAAW"
-    pw1 = "AAAABAABBBAw"
+    pwd1 = "AAAABAABBBAw"
     If pwd1 = "" Then Exit Sub
     For Each ws In Worksheets
         ws.Unprotect Password:=pwd1
@@ -73,6 +73,8 @@ Sheets("DENY-Does NOT Qualfiy for ATWEC").Range("A4").Formula = _
 
 Sheets("Sponsor_Provider S-C Letter ").Range("A4").Formula = _
 "=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
+
+Sheets("INPUT SHEET").Range("B2").Select
 End Sub
 
 
