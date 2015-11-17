@@ -36,14 +36,48 @@ End Sub
 
 Sub InputsheetFormulas()
 
+Sheets("INPUT SHEET").Range("B9").Formula = "=DATE(YEAR(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))+IF(MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))=12,2,1),MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))+IF(MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))=12,-11,1),1)"
 Sheets("INPUT SHEET").Range("B16").Formula = "=IF(B10=""Deployed"",""Yes"",""No"")"
 Sheets("INPUT SHEET").Range("B17").Formula = "=B9-1"
 Sheets("INPUT SHEET").Range("B120").Formula = "=IF(B119=""Yes"",B47+90,"""")"
-'Sheets("INPUT SHEET").Range("B51").NumberFormat = "@"
-'Sheets("INPUT SHEET").Range("B52").NumberFormat = "@"
 Sheets("Full Time Calculation 2015 1-6").Range("B10").Formula = "='INPUT SHEET'!B23"
-Sheets("INPUT SHEET").Range("B9").Formula = "=DATE(YEAR(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))+IF(MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))=12,2,1),MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))+IF(MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))=12,-11,1),1)"
+    
+    Sheets("INPUT SHEET").Range("AD3").Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+    Sheets("INPUT SHEET").Range("AD3").Formula = "=LEFT(AE3,2)"
+    Sheets("INPUT SHEET").Range("B7").Select
+    With Selection.Validation
+        .Delete
+    End With
+    Sheets("INPUT SHEET").Range("B42").Select
+    With Selection.Validation
+        .Delete
+    End With
+    Sheets("INPUT SHEET").Range("B55").Select
+    With Selection.Validation
+        .Delete
+    End With
+    Sheets("INPUT SHEET").Range("B68").Select
+    With Selection.Validation
+        .Delete
+    End With
 
+Sheets("INPUT SHEET").Range("B42").Formula = "=if(B23<>"""",B23,"""")"
+Sheets("INPUT SHEET").Range("B54").Formula = "=if(B25<>"""",""Yes"","""")"
+Sheets("INPUT SHEET").Range("B55").Formula = "=if(B25<>"""",B25,"""")"
+Sheets("INPUT SHEET").Range("B67").Formula = "=if(B27<>"""",""Yes"","""")"
+Sheets("INPUT SHEET").Range("B68").Formula = "=if(B27<>"""",B27,"""")"
+
+Sheets("Sponsor_Provider Letter").Range("A4").Formula = _
+"=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
+
+Sheets("ATWEC-Sponsor_Provider Letter").Range("A4").Formula = _
+"=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
+
+Sheets("DENY-Does NOT Qualfiy for ATWEC").Range("A4").Formula = _
+"=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
+
+Sheets("Sponsor_Provider S-C Letter ").Range("A4").Formula = _
+"=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
 End Sub
 
 
@@ -55,29 +89,39 @@ Sub SaveNewChildFile()
      
     Dim FName           As String
     Dim FPath           As String
+    Dim FDate           As String
     Dim actiontype       As String
     
 
-actiontype = Sheets("INPUT SHEET").Range("b36")
+    actiontype = Sheets("INPUT SHEET").Range("b36")
+    FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+    & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
     'Change the J here if your drive is mapped to another letter
     FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
-    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype
+    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " " & FDate
 
     
-    ActiveWorkbook.SaveAs FPath & FName & ".xlsm", FileFormat:=52
+    
     
     Call SaveTFI
     Call SaveFullCalc
+    
+    ActiveWorkbook.SaveAs FPath & FName & ".xlsm", FileFormat:=52
      
 End Sub
 
 Sub SaveTFI()
  
+Sub SaveTFI()
+ 
     Dim FName As String, FPDFName As String
     Dim FPath           As String
+    Dim FDate As String
 
-FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " TFI Calc "
-
+FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+    & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " TFI Calc " _
+    & FDate
 'Change the FPath here to wherever you want to keep your PDFs
 FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
 FPDFName = FPath & FName & ".pdf"
@@ -86,13 +130,13 @@ FPDFName = FPath & FName & ".pdf"
     
 Sheets("TFI CALC").ExportAsFixedFormat _
 Type:=xlTypePDF, _
-filename:=FPDFName, _
+Filename:=FPDFName, _
 Quality:=xlQualityStandard, _
 IncludeDocProperties:=True, _
 from:=1, _
 to:=1, _
 IgnorePrintAreas:=False, _
-OpenAfterPublish:=False
+OpenAfterPublish:=True
 
 End Sub
 
@@ -100,9 +144,12 @@ Sub SaveFullCalc()
 
 Dim FName As String, FPDFName As String
 Dim FPath           As String
+Dim FDate As String
 
-FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Full Time Calc "
-
+FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+    & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Full Time Calc " _
+    & FDate
 'Change the FPath here to wherever you want to keep your PDFs
 FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
 FPDFName = FPath & FName & ".pdf"
@@ -111,13 +158,13 @@ FPDFName = FPath & FName & ".pdf"
     
 Sheets("Full Time Calculation 2015 1-6").ExportAsFixedFormat _
 Type:=xlTypePDF, _
-filename:=FPDFName, _
+Filename:=FPDFName, _
 Quality:=xlQualityStandard, _
 IncludeDocProperties:=True, _
 from:=1, _
 to:=1, _
 IgnorePrintAreas:=False, _
-OpenAfterPublish:=False
+OpenAfterPublish:=True
 
 
 End Sub
