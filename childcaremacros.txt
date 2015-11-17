@@ -1,5 +1,9 @@
 Sub UnlockChildcare()
- 
+
+'Make sure you change the file paths before using these macros
+'C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\
+'Find and replace all instances of that filepath with your own location 
+
 On Error Resume Next
 
 Application.ActiveProtectedViewWindow.Edit
