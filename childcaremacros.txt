@@ -1,4 +1,3 @@
-
 Sub Autocalc()
 Application.Calculation = xlCalculationAutomatic
 End Sub
@@ -129,7 +128,7 @@ FPDFName = FPath & FName & ".pdf"
     
 Sheets("TFI CALC").ExportAsFixedFormat _
 Type:=xlTypePDF, _
-Filename:=FPDFName, _
+filename:=FPDFName, _
 Quality:=xlQualityStandard, _
 IncludeDocProperties:=True, _
 from:=1, _
@@ -157,7 +156,7 @@ FPDFName = FPath & FName & ".pdf"
     
 Sheets("Full Time Calculation 2015 1-6").ExportAsFixedFormat _
 Type:=xlTypePDF, _
-Filename:=FPDFName, _
+filename:=FPDFName, _
 Quality:=xlQualityStandard, _
 IncludeDocProperties:=True, _
 from:=1, _
@@ -179,9 +178,8 @@ Dim numchilds As Integer
         Call SaveChild2
     ElseIf numchilds = 3 Then
         Call SaveChild3
-    Else
+    ElseIf numchilds > 3 Then
         MsgBox ("This macro currently only supports up to 3 children")
-        Exit Sub
     
     End If
 
@@ -306,12 +304,11 @@ Dim numcalcs1
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-    Else
-    
+    ElseIf numcalcs1 > 3 Then
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        Exit Sub
         
     End If
+    
         
 
 End Sub
@@ -504,10 +501,8 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-   Else
-    
+   ElseIf numcalcs1 > 3 Then
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        Exit Sub
         
     End If
     
@@ -561,10 +556,8 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-    Else
-    
+    ElseIf numcalcs2 > 3 Then
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        Exit Sub
         
     End If
         
@@ -921,10 +914,8 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-    Else
-    
+    ElseIf numcalcs1 > 3 Then
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        Exit Sub
         
     End If
         
@@ -980,10 +971,8 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-    Else
-    
+    ElseIf numcalcs2 > 3 Then
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        Exit Sub
         
     End If
         
@@ -1037,13 +1026,10 @@ Dim actiontype As String
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
         
-    Else
-    
+    ElseIf numcalcs3 > 3 Then
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        Exit Sub
         
     End If
     
 End Sub
-
 
