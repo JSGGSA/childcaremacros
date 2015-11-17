@@ -181,7 +181,7 @@ Dim numchilds As Integer
         Call SaveChild3
     Else
         MsgBox ("This macro currently only supports up to 3 children")
-        End Sub
+        Exit Sub
     
     End If
 
@@ -309,7 +309,7 @@ Dim numcalcs1
     Else
     
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        End Sub
+        Exit Sub
         
     End If
         
@@ -507,7 +507,7 @@ Dim actiontype As String
    Else
     
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        End Sub
+        Exit Sub
         
     End If
     
@@ -564,7 +564,7 @@ Dim actiontype As String
     Else
     
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        End Sub
+        Exit Sub
         
     End If
         
@@ -924,7 +924,7 @@ Dim actiontype As String
     Else
     
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        End Sub
+        Exit Sub
         
     End If
         
@@ -983,7 +983,7 @@ Dim actiontype As String
     Else
     
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        End Sub
+        Exit Sub
         
     End If
         
@@ -1040,7 +1040,7 @@ Dim actiontype As String
     Else
     
         MsgBox ("This macro only supports up to 3 Calculations per child")
-        End Sub
+        Exit Sub
         
     End If
     
