@@ -1,1 +1,1003 @@
-# childcaremacros
+
+Sub Autocalc()
+Application.Calculation = xlCalculationAutomatic
+End Sub
+
+
+Sub UnlockChildcare()
+ 
+
+On Error Resume Next
+
+Application.ActiveProtectedViewWindow.Edit
+
+ On Error GoTo ErrorOccured
+   
+    Dim pwd1 As String
+    'pwd1 = "AABBAAAAAAAW"
+    pw1 = "AAAABAABBBAw"
+    If pwd1 = "" Then Exit Sub
+    For Each ws In Worksheets
+        ws.Unprotect Password:=pwd1
+    Next
+    MsgBox "All sheets UnProtected."
+    
+    Call InputsheetFormulas
+   
+   Exit Sub
+     
+ErrorOccured:
+    MsgBox "Sheets could not be UnProtected - Password Incorrect"
+    Exit Sub
+
+
+    
+End Sub
+
+Sub InputsheetFormulas()
+
+Sheets("INPUT SHEET").Range("B16").Formula = "=IF(B10=""Deployed"",""Yes"",""No"")"
+Sheets("INPUT SHEET").Range("B17").Formula = "=B9-1"
+Sheets("INPUT SHEET").Range("B120").Formula = "=IF(B119=""Yes"",B47+90,"""")"
+'Sheets("INPUT SHEET").Range("B51").NumberFormat = "@"
+'Sheets("INPUT SHEET").Range("B52").NumberFormat = "@"
+Sheets("Full Time Calculation 2015 1-6").Range("B10").Formula = "='INPUT SHEET'!B23"
+Sheets("INPUT SHEET").Range("B9").Formula = "=DATE(YEAR(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))+IF(MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))=12,2,1),MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))+IF(MONTH(MIN('Input Sheet'!B47,'Input Sheet'!B60,'Input Sheet'!B73))=12,-11,1),1)"
+
+End Sub
+
+
+
+
+
+
+Sub SaveNewChildFile()
+     
+    Dim FName           As String
+    Dim FPath           As String
+    Dim actiontype       As String
+    
+
+actiontype = Sheets("INPUT SHEET").Range("b36")
+    'Change the J here if your drive is mapped to another letter
+    FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
+    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype
+
+    
+    ActiveWorkbook.SaveAs FPath & FName & ".xlsm", FileFormat:=52
+    
+    Call SaveTFI
+    Call SaveFullCalc
+     
+End Sub
+
+Sub SaveTFI()
+ 
+    Dim FName As String, FPDFName As String
+    Dim FPath           As String
+
+FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " TFI Calc "
+
+'Change the FPath here to wherever you want to keep your PDFs
+FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+FPDFName = FPath & FName & ".pdf"
+    
+    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
+    
+Sheets("TFI CALC").ExportAsFixedFormat _
+Type:=xlTypePDF, _
+filename:=FPDFName, _
+Quality:=xlQualityStandard, _
+IncludeDocProperties:=True, _
+from:=1, _
+to:=1, _
+IgnorePrintAreas:=False, _
+OpenAfterPublish:=False
+
+End Sub
+
+Sub SaveFullCalc()
+
+Dim FName As String, FPDFName As String
+Dim FPath           As String
+
+FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Full Time Calc "
+
+'Change the FPath here to wherever you want to keep your PDFs
+FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+FPDFName = FPath & FName & ".pdf"
+    
+    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
+    
+Sheets("Full Time Calculation 2015 1-6").ExportAsFixedFormat _
+Type:=xlTypePDF, _
+filename:=FPDFName, _
+Quality:=xlQualityStandard, _
+IncludeDocProperties:=True, _
+from:=1, _
+to:=1, _
+IgnorePrintAreas:=False, _
+OpenAfterPublish:=False
+
+
+End Sub
+
+Sub RunLetters()
+Dim numchilds As Integer
+
+    numchilds = InputBox("How many children?", "enter number of children", 1)
+
+    If numchilds = 1 Then
+        Call SaveChild1
+    ElseIf numchilds = 2 Then
+        Call SaveChild2
+    ElseIf numchilds = 3 Then
+        Call SaveChild3
+    Else
+        MsgBox ("This macro currently only supports up to 3 children")
+        End Sub
+    
+    End If
+
+End Sub
+Sub SaveChild1()
+
+Dim FName As String, FPDFName As String
+Dim FPath As String
+Dim FDate As String
+Dim actiontype As String
+Dim numcalcs1
+
+    actiontype = Sheets("INPUT SHEET").Range("b36")
+    numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
+    
+    
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Reg Fee " _
+            & FDate
+    'Change the FPath here to wherever you want to keep your PDFs
+        FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+        FPDFName = FPath & FName & ".pdf"
+
+    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
+
+    'Reg Fee Sheet
+        Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    If Sheets("input sheet").Range("b133") = "ATWEC" Then
+
+    'ATWEC-Sponsor_Provider Letter
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    Else
+
+    'Sponsor Letter Sheet
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+    
+    End If
+    
+    'Invoice #1
+    
+    If numcalcs1 = 1 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        
+    ElseIf numcalcs1 = 2 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+        & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs1 = 3 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+        & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    Else
+    
+        MsgBox ("This macro only supports up to 3 Calculations per child")
+        End Sub
+        
+    End If
+        
+
+End Sub
+Sub SaveChild2()
+
+
+Dim FName As String, FPDFName As String
+Dim FPath           As String
+Dim FDate As String
+Dim numcalcs1 As Integer
+Dim numcalcs2 As Integer
+Dim actiontype As String
+
+        actiontype = Sheets("INPUT SHEET").Range("b36")
+        numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
+        numcalcs2 = InputBox("How many calculations for child 2?", "Enter the number of calculations for child 2", 1)
+        
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Reg Fee " _
+            & FDate
+    'Change the FPath here to wherever you want to keep your PDFs
+        FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+        FPDFName = FPath & FName & ".pdf"
+    
+    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
+
+    'Reg Fee Sheet
+        Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    
+    'ATWEC-Sponsor_Provider Letter both kids
+    
+    If Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b161") = "ATWEC" Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    
+    'ATWEC-Sponsor_Provider Letter child1
+    
+    ElseIf Sheets("input sheet").Range("b133") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=2, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    
+    'ATWEC-Sponsor_Provider Letter child1 only
+    
+    ElseIf Sheets("input sheet").Range("b161") = "ATWEC" Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=2, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+    
+    Else
+    
+    'Sponsor Letter Sheet
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+    
+    End If
+
+    'Invoice #1
+    
+    If numcalcs1 = 1 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+         FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs1 = 2 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs1 = 3 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+   Else
+    
+        MsgBox ("This macro only supports up to 3 Calculations per child")
+        End Sub
+        
+    End If
+    
+    'Invoice #2
+    
+    If numcalcs1 = 1 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice2 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #2").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    ElseIf numcalcs2 = 2 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice2 " _
+        & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Invoice #2").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs2 = 3 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice2 " _
+        & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Invoice #2").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    Else
+    
+        MsgBox ("This macro only supports up to 3 Calculations per child")
+        End Sub
+        
+    End If
+        
+        
+End Sub
+Sub SaveChild3()
+
+Dim FName As String
+Dim FPDFName As String
+Dim FPath As String
+Dim FDate As String
+Dim numcalcs1 As Integer
+Dim numcalcs2 As Integer
+Dim numcalcs3 As Integer
+Dim actiontype As String
+
+        actiontype = Sheets("INPUT SHEET").Range("b36")
+        numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
+        numcalcs2 = InputBox("How many calculations for child 2?", "Enter the number of calculations for child 2", 1)
+        numcalcs3 = InputBox("How many calculations for child 3?", "Enter the number of calculations for child 3", 1)
+       
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Reg Fee " _
+            & FDate
+    'Change the FPath here to wherever you want to keep your PDFs
+        FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+        FPDFName = FPath & FName & ".pdf"
+    
+    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
+
+    'Reg Fee Sheet
+        Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    'Start if loops for ATWEC Letter Checking *****************
+
+    If Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b161") = "ATWEC" And Sheets("input sheet").Range("b189") = "ATWEC" Then
+    
+    'ATWEC-Sponsor_Provider Letter all 3 kids
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+
+    'ATWEC-Sponsor_Provider Letter first two kids and regular letter for child3
+
+    ElseIf Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b161") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=3, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    'ATWEC-Sponsor_Provider Letter second two kids and regular letter for child1
+
+    ElseIf Sheets("input sheet").Range("b161") = "ATWEC" And Sheets("input sheet").Range("b189") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=2, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+
+    'ATWEC-Sponsor_Provider Letter first and third kids and regular letter for child2
+    
+    ElseIf Sheets("input sheet").Range("b133") = "ATWEC" And Sheets("input sheet").Range("b189") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter1 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter2 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=3, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=2, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+
+    'ATWEC-Sponsor_Provider Letter child1 only
+    
+    ElseIf Sheets("input sheet").Range("b133") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=2, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+
+    'ATWEC-Sponsor_Provider Letter child2 only
+
+    ElseIf Sheets("input sheet").Range("b161") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letter1 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letter2 " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=3, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=2, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    'ATWEC-Sponsor_Provider Letter child3 only
+    
+    ElseIf Sheets("input sheet").Range("b189") = "ATWEC" Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " ATWEC Letter " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("ATWEC-Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=3, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+
+    Else
+
+    'Sponsor Letter Sheet
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Letters " _
+            & FDate
+        FPDFName = FPath & FName & ".pdf"
+        
+        Sheets("Sponsor_Provider Letter").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+
+    End If
+
+    
+    'Invoice #1
+    
+    If numcalcs1 = 1 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+         FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs1 = 2 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+         FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs1 = 3 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice1 " _
+            & FDate
+         FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #1").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    Else
+    
+        MsgBox ("This macro only supports up to 3 Calculations per child")
+        End Sub
+        
+    End If
+        
+    
+    'Invoice #2
+    
+    If numcalcs2 = 1 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice2 " _
+            & FDate
+           FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #2").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+    
+    ElseIf numcalcs2 = 2 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice2 " _
+            & FDate
+           FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #2").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=2, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+    
+    
+    ElseIf numcalcs2 = 3 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice2 " _
+            & FDate
+           FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #2").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    Else
+    
+        MsgBox ("This macro only supports up to 3 Calculations per child")
+        End Sub
+        
+    End If
+        
+    'Invoice #3
+    
+    If numcalcs3 = 1 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice3 " _
+            & FDate
+          FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #3").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=1, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs3 = 2 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice3 " _
+            & FDate
+          FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #3").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    ElseIf numcalcs3 = 3 Then
+    
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " Invoice3 " _
+            & FDate
+          FPDFName = FPath & FName & ".pdf"
+            
+        Sheets("Invoice #3").ExportAsFixedFormat _
+        Type:=xlTypePDF, _
+        filename:=FPDFName, _
+        Quality:=xlQualityStandard, _
+        IncludeDocProperties:=True, _
+        from:=1, _
+        to:=3, _
+        IgnorePrintAreas:=False, _
+        OpenAfterPublish:=True
+        
+    Else
+    
+        MsgBox ("This macro only supports up to 3 Calculations per child")
+        End Sub
+        
+    End If
+    
+End Sub
+
+
