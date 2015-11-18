@@ -15,9 +15,9 @@ Application.Calculation = xlCalculationAutomatic
     'pwd1 = "AABBAAAAAAAW"
     pwd1 = "AAAABAABBBAw"
     If pwd1 = "" Then Exit Sub
-    'For Each ws In Worksheets
-    '   ws.Unprotect Password:=pwd1
-    'Next
+    For Each ws In Worksheets
+       ws.Unprotect Password:=pwd1
+    Next
     MsgBox "All sheets UnProtected."
 
 
@@ -38,9 +38,9 @@ Dim strTitle As String
       Call InputsheetFormulas
     End If
     
-    For Each ws In Worksheets
-      ws.Protect (pwd1)
-    Next
+    'For Each ws In Worksheets
+    ' ws.Protect (pwd1)
+    'Next
     
     Exit Sub
 
