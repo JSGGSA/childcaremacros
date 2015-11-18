@@ -194,7 +194,7 @@ to:=2, _
 IgnorePrintAreas:=False, _
 OpenAfterPublish:=True
 
-EndnIf
+EndIf
 
 End Sub
 
