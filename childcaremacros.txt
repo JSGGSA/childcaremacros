@@ -194,6 +194,8 @@ to:=2, _
 IgnorePrintAreas:=False, _
 OpenAfterPublish:=True
 
+EndnIf
+
 End Sub
 
 Sub RunLetters()
