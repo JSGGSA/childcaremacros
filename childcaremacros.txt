@@ -12,12 +12,12 @@ Application.Calculation = xlCalculationAutomatic
  On Error GoTo ErrorOccured
    
     Dim pwd1 As String
-    pwd1 = "AABBAAAAAAAW"
-    'pwd1 = "AAAABAABBBAw"
+    'pwd1 = "AABBAAAAAAAW"
+    pwd1 = "AAAABAABBBAw"
     If pwd1 = "" Then Exit Sub
-    For Each ws In Worksheets
-        ws.Unprotect Password:=pwd1
-    Next
+    'For Each ws In Worksheets
+    '   ws.Unprotect Password:=pwd1
+    'Next
     MsgBox "All sheets UnProtected."
 
 
@@ -169,6 +169,8 @@ FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("
 FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
 FPDFName = FPath & FName & ".pdf"
 
+
+If Sheets("INPUT SHEET").Range("B22") < 4 Then
     
 Sheets("Full Time Calculation 2015 1-6").ExportAsFixedFormat _
 Type:=xlTypePDF, _
@@ -180,6 +182,17 @@ to:=1, _
 IgnorePrintAreas:=False, _
 OpenAfterPublish:=True
 
+Else
+
+Sheets("Full Time Calculation 2015 1-6").ExportAsFixedFormat _
+Type:=xlTypePDF, _
+filename:=FPDFName, _
+Quality:=xlQualityStandard, _
+IncludeDocProperties:=True, _
+from:=1, _
+to:=2, _
+IgnorePrintAreas:=False, _
+OpenAfterPublish:=True
 
 End Sub
 
