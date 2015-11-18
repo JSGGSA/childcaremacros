@@ -56,6 +56,7 @@ Sheets("INPUT SHEET").Range("B9").Formula = "=DATE(YEAR(MIN('INPUT SHEET'!B47,'I
 Sheets("INPUT SHEET").Range("B16").Formula = "=IF(B10=""Deployed"",""Yes"",""No"")"
 Sheets("INPUT SHEET").Range("B17").Formula = "=B9-1"
 Sheets("INPUT SHEET").Range("B120").Formula = "=IF(B119=""Yes"",B47+90,"""")"
+Sheets("Full Time Calculation 2015 1-6").Range("B10:F10").NumberFormat = "General"
 Sheets("Full Time Calculation 2015 1-6").Range("B10").Formula = "='INPUT SHEET'!B23"
     
     Sheets("INPUT SHEET").Range("AD3").Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
