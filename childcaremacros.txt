@@ -193,7 +193,7 @@ Dim numchilds As Integer
         MsgBox ("This macro currently only supports up to 3 children")
     
     End If
-
+ActiveWorkbook.Save
 End Sub
 
 Sub SaveChild1()
