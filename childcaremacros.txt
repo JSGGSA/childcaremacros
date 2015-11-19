@@ -2,7 +2,7 @@ Sub UnlockChildcare()
 
 'Make sure you change the file paths before using these macros
 'C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\
-'Find and replace all instances of that filepath with your own location 
+'Find and replace all instances of that filepath with your own location
 
 On Error Resume Next
 
@@ -35,7 +35,7 @@ Dim strTitle As String
     promptanswer = MsgBox(strPrompt, vbYesNo, strTitle)
  
     If promptanswer = vbYes Then
-      Call InputsheetFormulas
+      Call InputSheetFormulas
     End If
     
     'For Each ws In Worksheets
@@ -88,6 +88,9 @@ Sheets("INPUT SHEET").Range("B67").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B67").Formula = "=if(B27<>"""",""Yes"","""")"
 Sheets("INPUT SHEET").Range("B68").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B68").Formula = "=if(B27<>"""",B27,"""")"
+Sheets("INPUT SHEET").Range("B133").NumberFormat = "General"
+Sheets("INPUT SHEET").Range("B133").Formula = _
+"=IF('Full Time Calculation 2015 1-6'!H20<=20,""ATWEC"",IF(B50="""",""Monthly"",""Weekly""))"
 
 Sheets("Sponsor_Provider Letter").Range("A4").Formula = _
 "=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
@@ -102,6 +105,7 @@ Sheets("Sponsor_Provider S-C Letter ").Range("A4").Formula = _
 "=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
 
 Sheets("INPUT SHEET").Range("B2").Select
+
 
 End Sub
 
@@ -118,7 +122,7 @@ Sub SaveNewChildFile()
     & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
     'Change the J here if your drive is mapped to another letter
     FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
-    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype &  " " & FDate
+    FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " " & actiontype & " " & FDate
 
     Call SaveTFI
     Call SaveFullCalc
@@ -197,7 +201,7 @@ to:=2, _
 IgnorePrintAreas:=False, _
 OpenAfterPublish:=True
 
-EndIf
+End If
 
 End Sub
 
