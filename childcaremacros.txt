@@ -123,8 +123,10 @@ Sub SaveNewChildFile()
     Call SaveTFI
     Call SaveFullCalc
     
+    Application.DisplayAlerts = False
     ActiveWorkbook.SaveAs FPath & FName & ".xlsm", FileFormat:=52
-     
+    Application.DisplayAlerts = True
+    
 End Sub
 
 Sub SaveTFI()
