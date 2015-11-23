@@ -533,7 +533,7 @@ Dim numcalcs2 As Integer
     End If
     
     'Invoice #2
-    If numcalcs1 = 1 Then
+    If numcalcs2 = 1 Then
     
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Invoice2 " _
             & FDate
