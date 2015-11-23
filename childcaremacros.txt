@@ -152,8 +152,6 @@ FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("
 FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
 FPDFName = FPath & FName & ".pdf"
     
-    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
-    
 Sheets("TFI CALC").ExportAsFixedFormat _
 Type:=xlTypePDF, _
 filename:=FPDFName, _
@@ -368,8 +366,6 @@ Dim numcalcs2 As Integer
     'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
         FPDFName = FPath & FName & ".pdf"
-    
-    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
 
     'Reg Fee Sheet
         Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -613,9 +609,7 @@ Dim numcalcs3 As Integer
     'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
         FPDFName = FPath & FName & ".pdf"
-    
-    'FPath = "J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\"
-
+   
     'Reg Fee Sheet
         Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
         Type:=xlTypePDF, _
