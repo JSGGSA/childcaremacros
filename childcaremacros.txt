@@ -90,7 +90,7 @@ Sheets("INPUT SHEET").Range("B68").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B68").Formula = "=if(B27<>"""",B27,"""")"
 Sheets("INPUT SHEET").Range("B133").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B133").Formula = _
-"=IF('Full Time Calculation 2015 1-6'!H20<=20,""ATWEC"",IF(B50="""",""Monthly"",""Weekly""))"
+"=IF('Full Time Calculation 2015 1-6'!G20<=20,""ATWEC"",IF(B50="""",""Monthly"",""Weekly""))"
 
 Sheets("Sponsor_Provider Letter").Range("A4").Formula = _
 "=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
