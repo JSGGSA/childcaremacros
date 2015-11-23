@@ -1,4 +1,6 @@
-Version 2.0
+'Version 2.0
+'Created by Joey Garon and Jake Snyder
+
 
 Sub UnlockChildcare()
 
