@@ -8,6 +8,10 @@ Sub UnlockChildcare()
 'C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\
 'Find and replace all instances of that filepath with your own location
 
+'If you are not part of the GSA Surge, change this filepath as well
+'J:\BCE\BCED-CC\Saved Family Worksheets for GSA Surge\
+'This should be changed to the shared drive where you save your Excel workbooks
+
 On Error Resume Next
 
 Application.ActiveProtectedViewWindow.Edit
