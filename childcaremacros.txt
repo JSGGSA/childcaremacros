@@ -766,9 +766,6 @@ Dim numcalcs3 As Integer
             IgnorePrintAreas:=False, _
             OpenAfterPublish:=True
             
-            
-            
-        
     
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
     
