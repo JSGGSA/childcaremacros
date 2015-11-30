@@ -238,16 +238,18 @@ Dim numcalcs1
 
     numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
     
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
+        
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
-    'Change the FPath here to wherever you want to keep your PDFs
+        'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
         FPDFName = FPath & FName & ".pdf"
         
 
-    'Reg Fee Sheet
+        'Reg Fee Sheet
         Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
         Type:=xlTypePDF, _
         filename:=FPDFName, _
@@ -257,6 +259,8 @@ Dim numcalcs1
         to:=1, _
         IgnorePrintAreas:=False, _
         OpenAfterPublish:=True
+        
+    End If
 
     'Letters
     If Sheets("INPUT SHEET").Range("B133") = "ATWEC" Then
@@ -363,25 +367,72 @@ Dim numcalcs2 As Integer
         numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
         numcalcs2 = InputBox("How many calculations for child 2?", "Enter the number of calculations for child 2", 1)
         
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+        
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
-    'Change the FPath here to wherever you want to keep your PDFs
-        FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-        FPDFName = FPath & FName & ".pdf"
-
-    'Reg Fee Sheet
-        Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
-        Type:=xlTypePDF, _
-        filename:=FPDFName, _
-        Quality:=xlQualityStandard, _
-        IncludeDocProperties:=True, _
-        from:=1, _
-        to:=2, _
-        IgnorePrintAreas:=False, _
-        OpenAfterPublish:=True
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=1, _
+            to:=2, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
         
+    
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
+    
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
+            & FDate
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=1, _
+            to:=1, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+    
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
+            & FDate
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=2, _
+            to:=2, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+    End If
+     
     
     'ATWEC-Sponsor_Provider Letter both kids
     If Sheets("INPUT SHEET").Range("B133") = "ATWEC" And Sheets("INPUT SHEET").Range("B161") = "ATWEC" Then
@@ -606,25 +657,184 @@ Dim numcalcs3 As Integer
         numcalcs2 = InputBox("How many calculations for child 2?", "Enter the number of calculations for child 2", 1)
         numcalcs3 = InputBox("How many calculations for child 3?", "Enter the number of calculations for child 3", 1)
        
+'Start If loops to check if reg fees are > 0
+
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+        
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
-    'Change the FPath here to wherever you want to keep your PDFs
-        FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-        FPDFName = FPath & FName & ".pdf"
-   
-    'Reg Fee Sheet
-        Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
-        Type:=xlTypePDF, _
-        filename:=FPDFName, _
-        Quality:=xlQualityStandard, _
-        IncludeDocProperties:=True, _
-        from:=1, _
-        to:=3, _
-        IgnorePrintAreas:=False, _
-        OpenAfterPublish:=True
-
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=1, _
+            to:=3, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+            
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+        
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
+            & FDate
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=1, _
+            to:=2, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+            
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+        
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
+            & FDate
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=2, _
+            to:=3, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+            
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+        
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
+            & FDate
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=1, _
+            to:=1, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+            
+            FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee2 " _
+            & FDate
+        'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            FPDFName = FPath & FName & ".pdf"
+    
+        'Reg Fee Sheet
+            Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+            Type:=xlTypePDF, _
+            filename:=FPDFName, _
+            Quality:=xlQualityStandard, _
+            IncludeDocProperties:=True, _
+            from:=3, _
+            to:=3, _
+            IgnorePrintAreas:=False, _
+            OpenAfterPublish:=True
+            
+            
+            
+        
+    
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
+    
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+                & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+            FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
+                & FDate
+            'Change the FPath here to wherever you want to keep your PDFs
+                FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+                FPDFName = FPath & FName & ".pdf"
+        
+            'Reg Fee Sheet
+                Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+                Type:=xlTypePDF, _
+                filename:=FPDFName, _
+                Quality:=xlQualityStandard, _
+                IncludeDocProperties:=True, _
+                from:=1, _
+                to:=1, _
+                IgnorePrintAreas:=False, _
+                OpenAfterPublish:=True
+            
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+    
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+                & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+            FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
+                & FDate
+            'Change the FPath here to wherever you want to keep your PDFs
+                FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+                FPDFName = FPath & FName & ".pdf"
+        
+            'Reg Fee Sheet
+                Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+                Type:=xlTypePDF, _
+                filename:=FPDFName, _
+                Quality:=xlQualityStandard, _
+                IncludeDocProperties:=True, _
+                from:=2, _
+                to:=2, _
+                IgnorePrintAreas:=False, _
+                OpenAfterPublish:=True
+            
+            
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+        
+        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
+                & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+            FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
+                & FDate
+            'Change the FPath here to wherever you want to keep your PDFs
+                FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+                FPDFName = FPath & FName & ".pdf"
+        
+            'Reg Fee Sheet
+                Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
+                Type:=xlTypePDF, _
+                filename:=FPDFName, _
+                Quality:=xlQualityStandard, _
+                IncludeDocProperties:=True, _
+                from:=3, _
+                to:=3, _
+                IgnorePrintAreas:=False, _
+                OpenAfterPublish:=True
+            
+    End If
 
     'Start if loops for ATWEC Letter Checking *****************
 
