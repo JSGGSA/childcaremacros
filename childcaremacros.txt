@@ -1,4 +1,4 @@
-'Version 2.0
+'Version 2.1.1
 'Created by Joey Garon and Jake Snyder
 
 
@@ -237,15 +237,17 @@ Dim FDate As String
 Dim numcalcs1
 
     numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
-    
-    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
         
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
-        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
-            & FDate
+            
         'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
+        
+        FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
+            & FDate
         FPDFName = FPath & FName & ".pdf"
         
 
@@ -358,8 +360,9 @@ End Sub
 Sub SaveChild2()
 
 
-Dim FName As String, FPDFName As String
-Dim FPath           As String
+Dim FName As String
+Dim FPDFName As String
+Dim FPath As String
 Dim FDate As String
 Dim numcalcs1 As Integer
 Dim numcalcs2 As Integer
@@ -367,15 +370,17 @@ Dim numcalcs2 As Integer
         numcalcs1 = InputBox("How many calculations for child 1?", "Enter the number of calculations for child 1", 1)
         numcalcs2 = InputBox("How many calculations for child 2?", "Enter the number of calculations for child 2", 1)
         
-    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
-        
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        
+        'Change the FPath here to wherever you want to keep your PDFs
+        FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+        
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+            
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -391,13 +396,9 @@ Dim numcalcs2 As Integer
     
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
     
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -412,13 +413,9 @@ Dim numcalcs2 As Integer
             
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
     
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -658,16 +655,18 @@ Dim numcalcs3 As Integer
         numcalcs3 = InputBox("How many calculations for child 3?", "Enter the number of calculations for child 3", 1)
        
 'Start If loops to check if reg fees are > 0
-
-    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
         
         FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
             & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
+        
+         'Change the FPath here to wherever you want to keep your PDFs
+            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
+            
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+            
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -683,13 +682,9 @@ Dim numcalcs3 As Integer
             
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
         
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -705,13 +700,9 @@ Dim numcalcs3 As Integer
             
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
         
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -727,13 +718,9 @@ Dim numcalcs3 As Integer
             
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
         
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -747,13 +734,9 @@ Dim numcalcs3 As Integer
             OpenAfterPublish:=True
             
             
-            FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-            & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee2 " _
             & FDate
-        'Change the FPath here to wherever you want to keep your PDFs
-            FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-            FPDFName = FPath & FName & ".pdf"
+        FPDFName = FPath & FName & ".pdf"
     
         'Reg Fee Sheet
             Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -769,13 +752,9 @@ Dim numcalcs3 As Integer
     
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 Then
     
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-                & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
             FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
                 & FDate
-            'Change the FPath here to wherever you want to keep your PDFs
-                FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-                FPDFName = FPath & FName & ".pdf"
+            FPDFName = FPath & FName & ".pdf"
         
             'Reg Fee Sheet
                 Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -790,13 +769,9 @@ Dim numcalcs3 As Integer
             
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
     
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-                & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
             FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
                 & FDate
-            'Change the FPath here to wherever you want to keep your PDFs
-                FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-                FPDFName = FPath & FName & ".pdf"
+            FPDFName = FPath & FName & ".pdf"
         
             'Reg Fee Sheet
                 Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
@@ -812,13 +787,9 @@ Dim numcalcs3 As Integer
             
     ElseIf Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
         
-        FDate = Month(Sheets("INPUT SHEET").Range("B47")) & "_" & Day(Sheets("INPUT SHEET").Range("B47")) _
-                & "_" & Year(Sheets("INPUT SHEET").Range("B47"))
             FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
                 & FDate
-            'Change the FPath here to wherever you want to keep your PDFs
-                FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
-                FPDFName = FPath & FName & ".pdf"
+            FPDFName = FPath & FName & ".pdf"
         
             'Reg Fee Sheet
                 Sheets("Reg Fee Invoices 1-6").ExportAsFixedFormat _
