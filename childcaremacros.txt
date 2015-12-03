@@ -46,9 +46,9 @@ Dim strTitle As String
       Call InputSheetFormulas
     End If
     
-    'For Each ws In Worksheets
-    ' ws.Protect (pwd1)
-    'Next
+    For Each ws In Worksheets
+     ws.Protect (pwd1)
+    Next
     
     Exit Sub
 
