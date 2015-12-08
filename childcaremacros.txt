@@ -100,6 +100,9 @@ Sheets("INPUT SHEET").Range("B133").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B133").Formula = _
 "=IF('Full Time Calculation 2015 1-6'!G16<=20,""ATWEC"",IF(B50="""",""Monthly"",""Weekly""))"
 
+Sheets("Full Time Calculation 2015 1-6").Range("K3").Formula = _
+"=VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE)"
+
 Sheets("Sponsor_Provider Letter").Range("A4").Formula = _
 "=CONCATENATE('INPUT SHEET'!E6,"","","" "", VLOOKUP('INPUT SHEET'!$B$7,'INPUT SHEET'!$AD$2:$AE$52,2,FALSE),"" "",'INPUT SHEET'!B8)"
 
