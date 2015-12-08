@@ -1,4 +1,4 @@
-'Version 2.1.4
+'Version 2.1.5
 'Created by Joey Garon and Jake Snyder
 
 
@@ -91,7 +91,7 @@ Sheets("INPUT SHEET").Range("B42").Formula = "=if(B23<>"""",B23,"""")"
 Sheets("INPUT SHEET").Range("B54").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B54").Formula = "=if(B25<>"""",""Yes"","""")"
 Sheets("INPUT SHEET").Range("B55").NumberFormat = "General"
-Sheets("INPUT SHEET").Range("B55").Formula = "=if(B25<>"""",B25,"""")"
+Sheets("INPUT SHEET").Range("B55").Formula = "=if(B54=""Yes"",B25,if(B54=""No"",B23,""""))"
 Sheets("INPUT SHEET").Range("B67").NumberFormat = "General"
 Sheets("INPUT SHEET").Range("B67").Formula = "=if(B27<>"""",""Yes"","""")"
 Sheets("INPUT SHEET").Range("B68").NumberFormat = "General"
