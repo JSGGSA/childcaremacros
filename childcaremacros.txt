@@ -1,6 +1,6 @@
-'Version 2.1.5
+'Version 2.1.6
 'Created by Joey Garon and Jake Snyder
-'Updated 8:35am EST 12/8/15
+'Updated 2:09pm EST 12/17/15
 
 Sub SaveNewChildFile()
      
@@ -261,7 +261,7 @@ Dim numcalcs2 As Integer
         'Change the FPath here to wherever you want to keep your PDFs
         FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
         
-    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 And Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
             
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee " _
             & FDate
@@ -547,7 +547,7 @@ Dim numcalcs3 As Integer
          'Change the FPath here to wherever you want to keep your PDFs
             FPath = "C:\Users\JosephSGaron\Desktop\CHILDCARESCREENSHOTS\"
             
-    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+    If Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 And Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 And Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
             
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
@@ -565,7 +565,7 @@ Dim numcalcs3 As Integer
             OpenAfterPublish:=True
             
             
-    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 And Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 Then
         
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
@@ -583,7 +583,7 @@ Dim numcalcs3 As Integer
             OpenAfterPublish:=True
             
             
-    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 And Sheets("Reg  Fee Invoices 1-6").Range("H79") > 0 Then
         
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
@@ -601,7 +601,7 @@ Dim numcalcs3 As Integer
             OpenAfterPublish:=True
             
             
-    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 & Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H17") > 0 And Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
         
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fee1 " _
             & FDate
