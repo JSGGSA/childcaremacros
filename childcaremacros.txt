@@ -1,6 +1,6 @@
-'Version 2.1.6
+'Version 2.1.7
 'Created by Joey Garon and Jake Snyder
-'Updated 2:09pm EST 12/17/15
+'Updated 9:21am EST 12/22/15
 
 Sub SaveNewChildFile()
      
@@ -583,7 +583,7 @@ Dim numcalcs3 As Integer
             OpenAfterPublish:=True
             
             
-    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 And Sheets("Reg  Fee Invoices 1-6").Range("H79") > 0 Then
+    ElseIf Sheets("Reg Fee Invoices 1-6").Range("H48") > 0 And Sheets("Reg Fee Invoices 1-6").Range("H79") > 0 Then
         
         FName = Sheets("INPUT SHEET").Range("B2") & ", " & Sheets("INPUT SHEET").Range("B3") & " Reg Fees " _
             & FDate
